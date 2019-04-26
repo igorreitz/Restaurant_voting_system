@@ -1,15 +1,24 @@
 package ru.my_restaurant_voting_system.repository;
 
 import ru.my_restaurant_voting_system.model.Dish;
+import ru.my_restaurant_voting_system.model.Menu;
 import ru.my_restaurant_voting_system.model.Restaurant;
 import ru.my_restaurant_voting_system.model.User;
 
-public interface Repository {
-    void addRestaurant(Restaurant restaurant);
+import java.util.List;
 
-    Restaurant getRestaurant();
+public interface Repository {
+    Restaurant addRestaurant(Restaurant restaurant);
+    Restaurant getRestaurant(int restaurantId);
+    List<Restaurant> getAllRestaurants();
+    boolean deleteRestaurant(int id);
+
+    void addMenu(Restaurant restaurant, Dish... dish);
+    Menu getMenu(int menuId);
+    List<Menu> getAllMenus(Restaurant restaurant);
 
     void addDish(Restaurant restaurant, Dish dish);
 
-    void vote(Restaurant restaurant, User user);
+
+    void vote(Restaurant restaurant);
 }
